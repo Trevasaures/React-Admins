@@ -1,6 +1,5 @@
 import { createContext, useState, useMemo } from "react";
 import { createTheme } from "@mui/material/styles";
-import { light } from "@mui/material/styles/createPalette";
 
 // color design tokens
 export const tokens = (mode) => ({
@@ -61,7 +60,7 @@ export const tokens = (mode) => ({
           800: "#2a2d64",
           900: "#151632",
         },
-        inscoRed: {
+        trueRed: {
           100: "#f9d3d1",
           200: "#f3a8a4",
           300: "#ed7c76",
@@ -72,7 +71,7 @@ export const tokens = (mode) => ({
           800: "#5a0f0b",
           900: "#2d0705",
         },
-        inscoBlue: {
+        trueBlue: {
           100: "#d9edf4",
           200: "#b3dce8",
           300: "#8ecadd",
@@ -83,7 +82,7 @@ export const tokens = (mode) => ({
           800: "#1a434f",
           900: "#0d2128",
         },
-        inscoGray: {
+        trueGray: {
           100: "#f4f4f3",
           200: "#e9e9e8",
           300: "#dddedc",
@@ -151,7 +150,7 @@ export const tokens = (mode) => ({
           800: "#c3c6fd",
           900: "#e1e2fe",
         },
-        inscoRed: {
+        trueRed: {
           100: "#2d0705",
           200: "#5a0f0b",
           300: "#871610",
@@ -162,7 +161,7 @@ export const tokens = (mode) => ({
           800: "#f3a8a4",
           900: "#f9d3d1",
         },
-        inscoBlue: {
+        trueBlue: {
           100: "#0d2128",
           200: "#1a434f",
           300: "#286477",
@@ -173,7 +172,7 @@ export const tokens = (mode) => ({
           800: "#b3dce8",
           900: "#d9edf4",
         },
-        inscoGray: {
+        trueGray: {
           100: "#282827",
           200: "#50504f",
           300: "#777876",
@@ -194,41 +193,20 @@ export const themeSettings = (mode) => {
   return {
     palette: {
       mode: mode,
-      ...colors(
-        mode === "dark"
-          ? {
-              primary: {
-                main: colors.primary[500],
-              },
-              secondary: {
-                main: colors.greenAccent[500],
-              },
-              neutral: {
-                dark: colors.grey[800],
-                main: colors.grey[500],
-                light: colors.grey[100],
-              },
-              background: {
-                default: colors.primary[500],
-              },
-            }
-          : {
-              primary: {
-                main: colors.primary[100],
-              },
-              secondary: {
-                main: colors.greenAccent[500],
-              },
-              neutral: {
-                dark: colors.grey[800],
-                main: colors.grey[500],
-                light: colors.grey[100],
-              },
-              background: {
-                default: "#fcfcfc",
-              },
-            }
-      ),
+      primary: {
+        main: mode === "dark" ? colors.primary[500] : colors.primary[100],
+      },
+      secondary: {
+        main: colors.greenAccent[500],
+      },
+      neutral: {
+        dark: colors.gray[800],
+        main: colors.gray[500],
+        light: colors.gray[100],
+      },
+      background: {
+        default: mode === "dark" ? colors.primary[500] : "#fcfcfc",
+      },
     },
     typography: {
       fontFamily: ["Source Sans Pro", "sans-serif"].join(","),
@@ -280,5 +258,5 @@ export const useMode = () => {
 
   const theme = useMemo(() => createTheme(themeSettings(mode)), [mode]);
 
-  return [mode, colorMode];
+  return [theme, colorMode];
 };
