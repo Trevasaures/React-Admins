@@ -96,7 +96,7 @@ const Sidebar = () => {
                   alt="profile-user"
                   width="100px"
                   height="100px"
-                  src={`../../assets/lol.png`}
+                  src={`../../assets/vp_operations.png`}
                   style={{ cursor: "pointer", borderRadius: "50%" }}
                 />
               </Box>

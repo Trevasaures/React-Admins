@@ -1,5 +1,19 @@
 {
-  "cSpell.words": ["Cersei", "insco", "Shuler", "Topbar"],
+  "cSpell.words": [
+    "Bayside",
+    "Cersei",
+    "daygrid",
+    "formik",
+    "fullcalendar",
+    "insco",
+    "Kingsville",
+    "nivo",
+    "Riverwood",
+    "Scroller",
+    "Shuler",
+    "timegrid",
+    "Topbar"
+  ],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
