@@ -1,29 +1,21 @@
-import { Box } from "@mui/material";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { Box, Typography, useTheme } from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 import { tokens } from "../../theme";
-import { mockDataContacts } from "../../data/mockData";
+import { mockDataInvoices } from "../../data/mockData";
 
 import Header from "../../components/header";
-import { useTheme } from "@mui/material";
 
-const Contacts = () => {
+const Invoices = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-    { field: "member_id", headerName: "Member ID", flex: 1 },
+    { field: "id", headerName: "ID" },
+
     {
       field: "name",
       headerName: "Name",
       flex: 1,
       cellClassName: "name-column--cell",
-    },
-    {
-      field: "age",
-      headerName: "Age",
-      type: "number",
-      headerAlign: "left",
-      align: "left",
     },
     {
       field: "phone",
@@ -35,16 +27,36 @@ const Contacts = () => {
       headerName: "Email",
       flex: 1,
     },
-    { field: "address", headerName: "Address", flex: 1 },
-    { field: "city", headerName: "City", flex: 1 },
-    { field: "zipCode", headerName: "Zip Code", flex: 1 },
+    {
+      field: "transactionAmount",
+      headerName: "Transaction Amount",
+      flex: 1,
+      renderCell: (params) => (
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center", // Vertically centers the content
+            height: "100%", // Ensures the Box takes full height of the cell
+          }}
+        >
+          <Typography color={colors.greenAccent[500]}>
+            ${params.row.transactionAmount}
+          </Typography>
+        </Box>
+      ),
+    },
+    {
+      field: "transactionDate",
+      headerName: "Transaction Date",
+      flex: 1,
+    },
   ];
 
   return (
     <Box m="20px">
       <Header
-        title="CONTACTS"
-        subtitle="Customers we have for future reference"
+        title="INVOICES"
+        subtitle="Customers who have made transactions"
       />
       <Box
         m="40px 0 0 0"
@@ -73,19 +85,12 @@ const Contacts = () => {
           "& .MuiCheckbox-root": {
             color: `${colors.greenAccent[200]} !important`,
           },
-          "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-            color: `${colors.gray[100]} !important`,
-          },
         }}
       >
-        <DataGrid
-          rows={mockDataContacts}
-          columns={columns}
-          components={{ Toolbar: GridToolbar }}
-        />
+        <DataGrid checkboxSelection rows={mockDataInvoices} columns={columns} />
       </Box>
     </Box>
   );
 };
 
-export default Contacts;
+export default Invoices;

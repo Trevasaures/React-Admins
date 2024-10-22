@@ -54,7 +54,7 @@ const Team = () => {
                 ? colors.trueRed[600]
                 : access === "manager"
                 ? colors.trueBlue[700]
-                : colors.trueGray[500]
+                : colors.greenAccent[400]
             }
             borderRadius="10px"
             textAlign="center"
