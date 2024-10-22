@@ -35,8 +35,8 @@ const Invoices = () => {
         <Box
           sx={{
             display: "flex",
-            alignItems: "center", // Vertically centers the content
-            height: "100%", // Ensures the Box takes full height of the cell
+            alignItems: "center",
+            height: "100%",
           }}
         >
           <Typography color={colors.greenAccent[500]}>
