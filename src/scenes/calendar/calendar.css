@@ -1,0 +1,31 @@
+/* Calendar.css */
+
+/* Toolbar Background and Padding */
+.fc .fc-toolbar {
+    background-color: #a3a3a3;   
+    color: #ffffff;
+    padding: 10px; 
+    border-radius: 5px;
+}
+
+/* Title Styling */
+.fc .fc-toolbar-title {
+    color: #ffffff;
+    margin: 0 10px; /* For space between title and buttons */
+    font-weight: bold;
+}
+
+/* Button Styling */
+.fc .fc-button {
+    background-color: #4cceac;
+    color: #ffffff;
+    border: none; 
+    padding: 5px 10px; 
+    margin: 0 5px; /* For space between buttons */
+    border-radius: 10px; 
+}
+
+.fc .fc-button:hover {
+    background-color: #555555;
+}
+
