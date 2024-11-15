@@ -5,7 +5,10 @@ import BarChart from "../../components/barchart";
 const Bar = () => {
   return (
     <Box m="20px">
-      <Header title="BAR CHART" subtitle="Simple Bar Chart With Random Data" />
+      <Header
+        title="REGIONAL PERFORMANCE METRICS (BAR)"
+        subtitle="Sales, expenses, profit, and growth by region"
+      />
       <Box height="75vh">
         <BarChart />
       </Box>
