@@ -287,3 +287,25 @@ export const mockDataInvoices = [
     transactionDate: "2024-10-09",
   },
 ];
+
+export const mockBarData = [
+  {
+    country: "USA",
+    hot_dog: 60,
+    burger: 80,
+    sandwich: 50,
+    kebab: 70,
+    fries: 100,
+    donut: 90,
+  },
+  {
+    country: "Canada",
+    hot_dog: 30,
+    burger: 50,
+    sandwich: 40,
+    kebab: 60,
+    fries: 80,
+    donut: 70,
+  },
+  // Add more mock data entries as needed
+];
