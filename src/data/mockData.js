@@ -290,22 +290,27 @@ export const mockDataInvoices = [
 
 export const mockBarData = [
   {
-    country: "USA",
-    hot_dog: 60,
-    burger: 80,
-    sandwich: 50,
-    kebab: 70,
-    fries: 100,
-    donut: 90,
+    Region: "North America",
+    Sales: 120000,
+    Expenses: 80000,
+    Profit: 40000,
   },
   {
-    country: "Canada",
-    hot_dog: 30,
-    burger: 50,
-    sandwich: 40,
-    kebab: 60,
-    fries: 80,
-    donut: 70,
+    Region: "Europe",
+    Sales: 100000,
+    Expenses: 70000,
+    Profit: 30000,
   },
-  // Add more mock data entries as needed
+  {
+    Region: "Asia",
+    Sales: 150000,
+    Expenses: 90000,
+    Profit: 60000,
+  },
+  {
+    Region: "South America",
+    Sales: 80000,
+    Expenses: 50000,
+    Profit: 30000,
+  },
 ];

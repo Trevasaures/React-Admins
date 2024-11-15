@@ -1,15 +1,21 @@
 import { useTheme } from "@mui/material";
 import { ResponsiveBar } from "@nivo/bar";
 import { tokens } from "../theme";
-import { mockBarData as Data } from "../data/mockData";
+import { mockBarData as data } from "../data/mockData";
 
 const BarChart = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
+  const currencyFormatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+  });
+
   return (
     <ResponsiveBar
-      data={Data}
+      data={data}
       theme={{
         axis: {
           domain: {
@@ -38,8 +44,8 @@ const BarChart = () => {
           },
         },
       }}
-      keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
-      indexBy="country"
+      keys={["Sales", "Expenses", "Profit"]}
+      indexBy="Region"
       margin={{ top: 50, right: 130, bottom: 50, left: 60 }}
       padding={0.3}
       valueScale={{ type: "linear" }}
@@ -65,20 +71,6 @@ const BarChart = () => {
           spacing: 10,
         },
       ]}
-      fill={[
-        {
-          match: {
-            id: "fries",
-          },
-          id: "dots",
-        },
-        {
-          match: {
-            id: "sandwich",
-          },
-          id: "lines",
-        },
-      ]}
       borderColor={{ theme: "grid.line.stroke" }}
       axisTop={null}
       axisRight={null}
@@ -86,22 +78,19 @@ const BarChart = () => {
         tickSize: 5,
         tickPadding: 5,
         tickRotation: 0,
-        legend: "country",
+        legend: "Regions",
         legendPosition: "middle",
         legendOffset: 32,
-        truncateTickAt: 0,
       }}
       axisLeft={{
         tickSize: 5,
         tickPadding: 5,
-        tickRotation: 0,
-        legend: "food",
+        tickRotation: 30,
+        legend: "Metrics",
         legendPosition: "middle",
-        legendOffset: -40,
-        truncateTickAt: 0,
+        legendOffset: -55,
       }}
-      labelSkipWidth={12}
-      labelSkipHeight={12}
+      label={(bar) => currencyFormatter.format(bar.value)}
       labelTextColor={{
         from: "color",
         modifiers: [["darker", 1.6]],
@@ -133,7 +122,9 @@ const BarChart = () => {
       role="application"
       ariaLabel="Nivo bar chart demo"
       barAriaLabel={(e) =>
-        e.id + ": " + e.formattedValue + " in country: " + e.indexValue
+        `${e.id}: ${currencyFormatter.format(e.formattedValue)} in region: ${
+          e.indexValue
+        }`
       }
     />
   );
