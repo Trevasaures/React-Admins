@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLocation } from "react-router-dom";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import "react-pro-sidebar/dist/css/styles.css";
 import { Box, IconButton, Typography, useTheme } from "@mui/material";
@@ -24,7 +25,7 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
     <MenuItem
       active={selected === title}
       style={{
-        color: colors.gray[100],
+        color: colors.primary[400],
       }}
       onClick={() => setSelected(title)}
       icon={icon}
@@ -37,28 +38,69 @@ const Item = ({ title, to, icon, selected, setSelected }) => {
 
 const Sidebar = () => {
   const theme = useTheme();
+  const location = useLocation();
   const colors = tokens(theme.palette.mode);
   const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("Dashboard");
+  
+  const [selected, setSelected] = useState(() => {
+    switch (location.pathname) {
+      case "/team":
+        return "Manage Team";
+      case "/contacts":
+        return "Contacts Information";
+      case "/invoices":
+        return "Invoices Balances";
+      case "/form":
+        return "Profile Form";
+      case "/calendar":
+        return "Calendar";
+      case "/faq":
+        return "FAQ Page";
+      case "/bar":
+        return "Bar Chart";
+      case "/pie":
+        return "Pie Chart";
+      case "/line":
+        return "Line Chart";
+      case "/geography":
+        return "Geography Chart";
+      case "/":
+      default:
+        return "Dashboard";
+    }
+  });  
 
   return (
     <Box
       sx={{
         "& .pro-sidebar-inner": {
-          background: `${colors.primary[400]} !important`,
+          backgroundColor: colors.secondary[100],
         },
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
         },
         "& .pro-inner-item": {
-          padding: "5px 15px 5px 20px !important",
-        },
-        "& .pro-inner-item:hover": {
-          color: "#868dfb !important",
+          padding: "8px 20px",
+          borderRadius: "25px", // Rounded sidebar items
+          margin: "5px 10px",
+          color: colors.neutral[900], // Default text color
+          transition: "all 0.8s ease", // Smooth transition
         },
         "& .pro-menu-item.active": {
-          color: "#6870fa !important",
+          backgroundColor: colors.primary[500], 
+          color: colors.primary[600],            
+          borderRadius: "25px",                 
+          fontWeight: "bold",
+          transition: "all 0.8s ease",
+          width: "90%",        
         },
+        "& .pro-sidebar.collapsed .pro-inner-item": {
+          justifyContent: "center",
+          alighnItems: "center",
+          padding: "8px 16px", // Adjust padding for collapsed state
+          width: "90%", 
+          margin: "5px auto", // Center the item in collapsed state
+        },  
       }}
     >
       <ProSidebar collapsed={isCollapsed}>
@@ -68,8 +110,8 @@ const Sidebar = () => {
             onClick={() => setIsCollapsed(!isCollapsed)}
             icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
             style={{
-              margin: "5px 0 20px 0", // Add margin to the top and bottom
-              color: colors.trueGray[400], // Change the color of the icon to gray
+              margin: "10px 0 20px 0", // Add margin to the top and bottom
+              color: colors.secondary[400], // Change the color of the icon warm beige
             }}
           >
             {!isCollapsed && (
@@ -79,7 +121,7 @@ const Sidebar = () => {
                 alignItems="center"
                 ml="5px"
               >
-                <Typography variant="h3" color={colors.trueGray[100]}>
+                <Typography variant="h3" color={colors.secondary[500]}>
                   Admins
                 </Typography>
                 <IconButton onClick={() => setIsCollapsed(!isCollapsed)}>
@@ -103,13 +145,13 @@ const Sidebar = () => {
               <Box textAlign="center">
                 <Typography
                   variant="h2"
-                  color={colors.gray[100]}
+                  color={colors.neutral[500]}
                   fontWeight="bold"
                   sx={{ m: "10px 0 0 0" }}
                 >
                   Jim James
                 </Typography>
-                <Typography variant="h5" color={colors.greenAccent[500]}>
+                <Typography variant="h5" color={colors.secondary[500]}>
                   VP of Staffing
                 </Typography>
               </Box>
@@ -127,7 +169,7 @@ const Sidebar = () => {
 
             <Typography
               variant="h5"
-              color={colors.gray[100]}
+              color={colors.primary[500]}
               sx={{
                 m: "15px 0 5px 20px",
                 ml: isCollapsed ? "auto" : "15px", // Center the text when collapsed
@@ -162,7 +204,7 @@ const Sidebar = () => {
 
             <Typography
               variant="h5"
-              color={colors.gray[100]}
+              color={colors.primary[500]}
               sx={{
                 m: "15px 0 5px 20px",
                 ml: isCollapsed ? "auto" : "15px", // Center the text when collapsed
@@ -197,7 +239,7 @@ const Sidebar = () => {
 
             <Typography
               variant="h5"
-              color={colors.gray[100]}
+              color={colors.primary[500]}
               sx={{ m: "15px 0 5px 20px", ml: "15px" }}
             >
               Charts

@@ -51,10 +51,10 @@ const Team = () => {
             justifyContent="center"
             backgroundColor={
               access === "admin"
-                ? colors.trueRed[600]
+                ? colors.secondary[600]
                 : access === "manager"
-                ? colors.trueBlue[700]
-                : colors.purpleAccent[500]
+                ? colors.secondary[700]
+                : colors.secondary[500]
             }
             borderRadius="10px"
             textAlign="center"
@@ -62,7 +62,7 @@ const Team = () => {
             {access === "admin" && <AdminPanelSettingsOutlinedIcon />}
             {access === "manager" && <SecurityOutlinedIcon />}
             {access === "user" && <LockOpenOutlinedIcon />}
-            <Typography color={colors.trueGray[100]} sx={{ ml: "5px" }}>
+            <Typography color={colors.primary[100]} sx={{ ml: "5px" }}>
               {access}
             </Typography>
           </Box>
@@ -85,10 +85,10 @@ const Team = () => {
             borderBottom: "none",
           },
           "& .name-column--cell": {
-            color: colors.greenAccent[500],
+            color: colors.background[100],
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.trueBlue[500],
+            backgroundColor: colors.secondary[500],
             borderBottom: "none",
           },
           "& .MuiDataGrid-virtualScroller": {
@@ -96,10 +96,10 @@ const Team = () => {
           },
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
-            backgroundColor: colors.trueBlue[700],
+            backgroundColor: colors.background[700],
           },
           "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
+            color: `${colors.secondary[200]} !important`,
           },
         }}
       >

@@ -39,7 +39,7 @@ const Invoices = () => {
             height: "100%",
           }}
         >
-          <Typography color={colors.greenAccent[500]}>
+          <Typography color={colors.primary[500]}>
             ${params.row.transactionAmount}
           </Typography>
         </Box>
@@ -69,10 +69,10 @@ const Invoices = () => {
             borderBottom: "none",
           },
           "& .name-column--cell": {
-            color: colors.greenAccent[300],
+            color: colors.background[100],
           },
           "& .MuiDataGrid-columnHeaders": {
-            backgroundColor: colors.blueAccent[700],
+            backgroundColor: colors.secondary[500],
             borderBottom: "none",
           },
           "& .MuiDataGrid-virtualScroller": {
@@ -80,10 +80,10 @@ const Invoices = () => {
           },
           "& .MuiDataGrid-footerContainer": {
             borderTop: "none",
-            backgroundColor: colors.blueAccent[700],
+            backgroundColor: colors.background[700],
           },
           "& .MuiCheckbox-root": {
-            color: `${colors.greenAccent[200]} !important`,
+            color: `${colors.primary[200]} !important`,
           },
         }}
       >

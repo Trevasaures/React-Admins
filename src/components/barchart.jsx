@@ -20,27 +20,27 @@ const BarChart = () => {
         axis: {
           domain: {
             line: {
-              stroke: colors.trueGray[100],
+              stroke: colors.secondary[100],
             },
           },
           legend: {
             text: {
-              fill: colors.trueGray[100],
+              fill: colors.secondary[100],
             },
           },
           ticks: {
             line: {
-              stroke: colors.trueGray[100],
+              stroke: colors.secondary[100],
               strokeWidth: 1,
             },
             text: {
-              fill: colors.trueGray[100],
+              fill: colors.secondary[100],
             },
           },
         },
         legends: {
           text: {
-            fill: colors.trueGray[100],
+            fill: colors.secondary[100],
           },
         },
       }}

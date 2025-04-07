@@ -15,40 +15,52 @@ const Topbar = () => {
   const colorMode = useContext(ColorModeContext);
 
   return (
-    <Box display="flex" justifyContent="space-between" p={2}>
-      {/* search bar */}
+    <Box
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+      p={2}
+      backgroundColor={colors.primary[100]} 
+      borderBottom={`1px solid ${colors.neutral[300]}`} 
+    >
+      {/* Search bar */}
       <Box
         display="flex"
-        backgroundColor={colors.primary[400]}
-        borderRadius="20px"
+        backgroundColor={colors.secondary[100]} // Soft secondary color
+        borderRadius="10px"
         width="50%"
+        boxShadow="0 2px 4px rgba(0,0,0,0.1)"
       >
-        <InputBase sx={{ ml: 2, flex: 1 }} placeholder="Search" />
-        <IconButton type="Button" sx={{ p: 1 }}>
-          <SearchIcon />
+        <InputBase
+          sx={{ ml: 2, flex: 1 }}
+          placeholder="Search..."
+          style={{ color: colors.neutral[800] }}
+        />
+        <IconButton type="button" sx={{ p: 1 }}>
+          <SearchIcon style={{ color: colors.primary[600] }} />
         </IconButton>
       </Box>
 
       {/* Icons */}
-      <Box display="flex">
+      <Box display="flex" gap="10px">
         <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
-            <DarkModeOutlinedIcon />
+            <DarkModeOutlinedIcon style={{ color: colors.neutral[400] }} />
           ) : (
-            <LightModeOutlinedIcon />
+            <LightModeOutlinedIcon style={{ color: colors.neutral[700] }} />
           )}
         </IconButton>
 
         <IconButton>
-          <NotificationsOutlinedIcon />
+          <NotificationsOutlinedIcon style={{ color: colors.primary[600] }} />
         </IconButton>
 
         <IconButton>
-          <SettingsOutlinedIcon />
+          <SettingsOutlinedIcon style={{ color: colors.primary[600] }} />
         </IconButton>
 
         <IconButton>
-          <PersonOutlinedIcon />
+          <PersonOutlinedIcon style={{ color: colors.primary[600] }} />
         </IconButton>
       </Box>
     </Box>
