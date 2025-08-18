@@ -7,6 +7,8 @@ const PieChart = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const total = data.reduce((sum, d) => sum + d.value, 0);
+  const formatCurrency = (value) =>
+  `$${value.toLocaleString("en-US", { minimumFractionDigits: 0 })}`;
 
   return (
     <ResponsivePie
@@ -39,7 +41,7 @@ const PieChart = () => {
           },
         },
       }}
-      margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+      margin={{ top: 20, right: 80, bottom: 80, left: 80 }}
       innerRadius={0.5}
       padAngle={0.7}
       cornerRadius={3}
@@ -53,7 +55,7 @@ const PieChart = () => {
         from: 'color',
         modifiers: [['darker', 2]],
       }}
-      arcLabel={(e) => `${((e.value / total) * 100).toFixed(1)}%`}
+      arcLabel={(e) => `${formatCurrency(e.value)}`}
       tooltip={({ datum: { id, value, color } }) => (
         <div
           style={{
@@ -64,7 +66,7 @@ const PieChart = () => {
             borderRadius: '4px',
           }}
         >
-          <strong>{id}</strong>: {value} ({((value / total) * 100).toFixed(1)}%)
+          <strong>{id}</strong>: {formatCurrency(value)} ({((value / total) * 100).toFixed(1)}%)
         </div>
       )}
       arcLinkLabelsTextColor={colors.gray[400]}
